@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  nodejs-server01:
+    container_name: nodejs-server01
+    build:
+      context: .
+      dockerfile: Dockerfile
+    platform: linux/amd64
+    volumes:
+     - ./source:/home/node
+     - ~/.ssh/id_rsa:/home/node/.ssh/id_rsa:ro
+     - ~/.ssh/known_hosts:/home/node/.ssh/known_hosts:ro
+    restart: always
+    ports:
+        - 3000:3000
